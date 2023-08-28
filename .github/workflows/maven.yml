@@ -5,11 +5,11 @@ name: Java CI with Maven in Linux
 on:
   push:
     branches:
-    - master
+    - main
     - task*
   pull_request:
     branches:
-    - master
+    - main
 
 jobs:
   build:
