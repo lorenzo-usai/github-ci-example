@@ -44,4 +44,10 @@ jobs:
       with:
         name: surefire-report-jdk-${{matrix.java}}
         path: '**/target/site'
+    - name: Archive Jacoco Report
+      uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: jacoco-report-jdk-${{matrix.java}}
+        path: '**/target/site'
       
