@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [8,11]
+        include:
+        - java: 8
+          additional-maven-args: "-Pjacoco"
+        - java: 11
 
     name: Build with Java ${{matrix.java}} on Linux
     steps:
@@ -29,7 +32,7 @@ jobs:
     - name: Build with Maven
       run: >
         mvn -f my-ci-project
-        clean verify -Pjacoco
+        clean verify ${{matrix.additional-maven-args}}
     - name: Generate JUnit Report
       run: >  
         mvn -f my-ci-project
