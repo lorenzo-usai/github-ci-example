@@ -46,8 +46,8 @@ jobs:
         path: '**/target/site'
     - name: Archive Jacoco Report
       uses: actions/upload-artifact@v2
-      if: ${{ always() }}
+      if: ${{ matrix.additional-maven-args != '' }}
       with:
         name: jacoco-report-jdk-${{matrix.java}}
-        path: '**/target/site'
+        path: '**/target/site/jacoco'
       
