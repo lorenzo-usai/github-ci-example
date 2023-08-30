@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ${{matrix.os}}
+    env:
+      workdir: my-ci-project
     strategy:
       matrix:
         os: [macos-latest, windows-latest]
@@ -26,4 +28,5 @@ jobs:
         key: ${{runner.os}}-m2-${{hashFiles('**/pom.xml')}}
         restore-keys: ${{runner.os}}-m2-
     - name: Build with Maven
-      run: mvn -f my-ci-project clean verify
+      run: mvn verify
+      working-directory: ${{env.workdir}}
