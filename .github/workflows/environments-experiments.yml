@@ -1,0 +1,18 @@
+# This workflow will build a Java project with Maven
+
+name: Environments experiments of Java CI with Maven
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    name: Build with the default Java
+    steps:
+    - uses: actions/checkout@v3
+    - name: Show Java version
+      run: java -version
+    - name: Build with Maven
+      run: mvn -f my-ci-project clean verify    
